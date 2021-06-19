@@ -89,9 +89,6 @@ class DetallePedido(models.Model):
     cantidad = models.IntegerField(null=True)
     subtotal = models.FloatField(null=True)
 
-    def __str__(self):
-        return f'{self.pedido.id} - {self.cantidad} x {self.producto.nombre}'
-
     def get_subtotal(self):
         return self.producto.get_precio_final() * self.cantidad
 
