@@ -132,9 +132,11 @@ EMAIL_HOST_USER = 'dd0904405f3a0a'
 EMAIL_HOST_PASSWORD = 'b064e40bb6a7e4'
 EMAIL_PORT = '2525'
 
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
 
 if 'ON_HEROKU' in os.environ:
     import django_heroku
