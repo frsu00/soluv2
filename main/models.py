@@ -93,6 +93,9 @@ class DetallePedido(models.Model):
     def get_subtotal(self):
         return self.producto.get_precio_final() * self.cantidad
 
+    def __str__(self):
+        return f'{self.producto.nombre} x {self.cantidad}'
+
 
 class Profile(models.Model):
     # Relacion con el modelo User de Django
@@ -129,7 +132,7 @@ class Cliente(models.Model):
     is_colaborador = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'Cliente: {self.user_profile.user.get_username()}'
+        return f'{self.user_profile.user.get_username()}'
 
 
 class Colaborador(models.Model):

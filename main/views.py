@@ -256,7 +256,15 @@ class CompletePaymentView(View):
         # Guardamos los cambios
         pedido.save()
         messages.success(request, 'Gracias por tu compra! Un repartidor ha sido asignado a tu pedido.')
-        return redirect('home')
+        return redirect('comprobante')
+
+
+def comprobante(request):
+    pedido = Pedido.objects.filter(estado='PAG').order_by('-fecha_creacion')[0]
+    context = {
+        'pedido': pedido
+    }
+    return render(request, "main/comprobante.html", context)
 
 
 def seeProduct(request):
@@ -266,7 +274,7 @@ def seeProduct(request):
     context = {
         'misproductos': misproductos
     }
-    return render(request,"main/mis_productos.html", context)
+    return render(request, "main/mis_productos.html", context)
 
 
 def createProduct(request):
@@ -311,7 +319,6 @@ def deleteProduct(request, pk):
 
 def reclamos(request):
     cliente_id = request.user.profile.cliente.id
-    print(cliente_id)
     cliente = Cliente.objects.get(id=cliente_id)
     initial_data = {
         'cliente': cliente,

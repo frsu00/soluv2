@@ -16,6 +16,7 @@ urlpatterns = [
     path('checkout/<int:pk>', views.PedidoUpdateView.as_view(), name='pedido-update'),
     path('payment/', views.PaymentView.as_view(), name='payment'),
     path('complete_payment/', views.CompletePaymentView.as_view(), name='complete-payment'),
+    path('comprobante/', views.comprobante, name='comprobante'),
 
     path('addproduct/', views.createProduct, name='addproduct'),
     path('editproduct/<str:pk>', views.editProduct, name='editproduct'),

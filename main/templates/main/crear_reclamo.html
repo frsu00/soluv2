@@ -4,6 +4,8 @@
 
 {% block content %}
 
+<p style="font-size: 48px; color: #FF5500">Presenta tu reclamo aquí:</p>
+
 <form method="POST">
     {% csrf_token %}
     {{ form|crispy }}

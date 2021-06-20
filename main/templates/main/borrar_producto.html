@@ -3,9 +3,35 @@
 
 {% block content %}
 
-<form action="{% url 'deleteproduct' producto.id %}" method="POST">
+<p style="font-size: 48px; color: #FF5500">¿Deseas eliminar este producto?</p>
+
+<p>En caso desees conservarlo, puedes volver <a href="{% url 'allmyproducts' %}">aquí</a></p>
+
+<div class="product-item mx-1 mb-3">
+    <div class="product-item-img">
+        <img class="product-item-img" src="{{ producto.images.first.image.url }}" alt="">
+    </div>
+    <div class="mx-2">
+        <div class="d-table">
+            <a class="product-item-link" href="{% url 'product-detail' producto.pk %}">
+                <h5 class="product-item-name-sub">{{ producto.nombre }}</h5>
+            </a>
+        </div>
+        {% if producto.has_discount %}
+            <span class="d-flex">
+                <h6 class="first mr-2">S/ {{ producto.precio|floatformat:"2g" }} </h6>
+                <h6 class="first-discount"> - {{ producto.get_discount|floatformat:"0" }}%</h6>
+            </span>
+            <h6 class="final">S/ {{ producto.get_precio_final|floatformat:"2g" }}</h6>
+        {% else %}
+            <h6 class="final">S/ {{ producto.precio|floatformat:"2g" }}</h6>
+        {% endif %}
+    </div>
+</div>
+
+<form class="mt-5" action="{% url 'deleteproduct' producto.id %}" method="POST">
     {% csrf_token %}
-    <input type="submit" name="submit">
+    <input type="submit" name="submit" value="Eliminar">
 
 </form>
 

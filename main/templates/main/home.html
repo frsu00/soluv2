@@ -39,12 +39,12 @@
 
     <div class="product">
         {% for producto in latest_products %}
-        <div class="product-item mx-2 mt-5" style="border: solid 1px #eee;">
+        <div class="product-item mx-1 mb-3">
             <a class="product-item-link" href="{% url 'product-detail' producto.pk %}">
             <div class="product-item-img">
-                <img src="" alt="">
+                <img class="product-item-img" src="{{ producto.images.first.image.url }}" alt="">
             </div>
-                <div class="mx-2 pb-3">
+                <div class="mx-2">
                     <div class="d-table">
                         <h5 class="product-item-name-sub">{{ producto.nombre }}</h5>
                     </div>
@@ -66,7 +66,4 @@
     </div>
 
     <hr>
-    <ul>
-      <li><a href="{% url 'product-list' %}">Ver Lista de Productos Completa</a></li>
-    </ul>
 {% endblock %}
