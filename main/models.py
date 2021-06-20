@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
 
 
 class Categoria(models.Model):
@@ -111,6 +112,10 @@ class Profile(models.Model):
     ]
     genero = models.CharField(max_length=2, choices=GENERO_CHOICES)
 
+    def mayorDeEdad(self):
+        if date.today().year - self.fecha_nacimiento.year >= 18:
+            return True
+
     def __str__(self):
         return self.user.get_username()
 
@@ -143,6 +148,16 @@ class Colaborador(models.Model):
 
     def __str__(self):
         return f'Colaborador: {self.user_profile.user.get_username()}'
+
+
+class Reclamo(models.Model):
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    colaborador = models.ForeignKey(Colaborador, on_delete=models.CASCADE)
+    descripcion = models.TextField(null=False)
+    fecha = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.cliente} por {self.colaborador}'
 
 
 class ProductoImage(models.Model):

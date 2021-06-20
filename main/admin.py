@@ -7,6 +7,7 @@ admin.site.register(Localizacion)
 admin.site.register(Categoria)
 admin.site.register(Pedido)
 admin.site.register(DetallePedido)
+admin.site.register(Reclamo)
 # Register your models here.
 
 

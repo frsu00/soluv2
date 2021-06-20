@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'storages',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -134,7 +135,7 @@ EMAIL_PORT = '2525'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 if 'ON_HEROKU' in os.environ:
     import django_heroku

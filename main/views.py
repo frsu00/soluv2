@@ -282,7 +282,7 @@ def createProduct(request):
     context = {
         'form': form
     }
-    return render(request,"main/crear_producto.html", context)
+    return render(request, "main/crear_producto.html", context)
 
 
 def editProduct(request, pk):
@@ -307,3 +307,20 @@ def deleteProduct(request, pk):
         'producto': producto
     }
     return render(request, "main/borrar_producto.html", context)
+
+
+def reclamos(request):
+    cliente_id = request.user.profile.cliente.id
+    print(cliente_id)
+    cliente = Cliente.objects.get(id=cliente_id)
+    initial_data = {
+        'cliente': cliente,
+    }
+    form = ReclamoForm(request.POST or None, initial=initial_data)
+    if form.is_valid():
+        form.save()
+
+    context = {
+        'form': form
+    }
+    return render(request, "main/crear_reclamo.html", context)

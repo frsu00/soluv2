@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Localizacion, Categoria, Producto
+from .models import Localizacion, Categoria, Producto, Reclamo
 
 class UserForm(UserCreationForm):
     # django.contrib.auth.User attributes
@@ -50,7 +50,11 @@ class UserForm(UserCreationForm):
                   'reputacion',
                   'cobertura_entrega',
                   ]
-
+        help_texts = {
+                    'username': None,
+                    'password1': None,
+                    'password2': None,
+                }
 
 class ProductoForm(ModelForm):
     class Meta:
@@ -58,4 +62,17 @@ class ProductoForm(ModelForm):
         fields = '__all__'
         widgets = {
             'proveedor': forms.HiddenInput()
+        }
+
+
+class ReclamoForm(ModelForm):
+    class Meta:
+        model = Reclamo
+        fields = '__all__'
+        widgets = {
+            'cliente': forms.HiddenInput()
+        }
+        help_texts = {
+            'cliente': None,
+            'proveedor': None,
         }

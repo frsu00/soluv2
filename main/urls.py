@@ -21,4 +21,6 @@ urlpatterns = [
     path('editproduct/<str:pk>', views.editProduct, name='editproduct'),
     path('allmyproducts/', views.seeProduct, name='allmyproducts'),
     path('deleteproduct/<str:pk>', views.deleteProduct, name='deleteproduct'),
+
+    path('reclamos/', views.reclamos, name='reclamos'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

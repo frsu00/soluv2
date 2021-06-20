@@ -17,10 +17,22 @@ input:focus-visible {
     background-color: #3d3d3d!important;
 }
 
+.navbar-nav a {
+    color: var(--main-color);
+    padding-top: 6px;
+    padding-bottom: 0px !important;
+}
+
+.navbar-nav a:hover, .nav-link p {
+    color: var(--main-color-hover) !important;
+    transition: .2s;
+    text-decoration: none
+}
+
 main {
     margin-right: 5%;
     margin-left: 5%;
-    margin-top: 67px;
+    margin-top: 10px;
 }
 
 .filter-busqueda {

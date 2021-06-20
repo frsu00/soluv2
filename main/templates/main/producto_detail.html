@@ -56,12 +56,17 @@
                     {% if user.profile.colaborador.is_colaborador %}
                     {% else %}
                         {% if user.is_authenticated %}
+
+                            {% if request.user.profile.mayorDeEdad %}
                             <a href="{% url 'add-to-cart' product_pk=object.pk %}" class='button is-primary'>
                               Añadir al carrito
                             </a>
                             <a href="{% url 'pedido-detail' %}" class='button'>
                               Ver carrito
                             </a>
+                            {% else %}
+                            <p style="color: red; font-weight: 900">Lamentamos informarle que usted necesita ser mayor de edad para poder comprar en esta tienda</p>
+                            {% endif %}
                         {% else %}
                             <a href="{% url 'login' %}" class='button is-primary'>
                               Añadir al carrito
