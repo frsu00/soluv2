@@ -1,11 +1,13 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
     <h3 class="title"> Checkout </h3>
     <div class="block">
         <h5 class="subtitle"> Completa tus datos </h5>
         <form method="post">
           {% csrf_token %}
-          {{ form.as_p }}
+            {{ form|crispy }}
+            <p class="mb-3" style="font-weight: 600">Dejar en blanco la dirección si se recogerá el producto en tienda</p>
           <input type="submit" value="Submit" class="button is-info">
         </form>
     </div>
