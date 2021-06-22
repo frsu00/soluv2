@@ -306,6 +306,22 @@ def editProduct(request, pk):
     return render(request, "main/editar_producto.html", context)
 
 
+def addImage(request, pk):
+    producto = Producto.objects.get(id=pk)
+    form = ImageForm(instance=producto)
+    initial_data = {
+        'product': producto,
+    }
+    form = ImageForm(request.POST or None, request.FILES or None, initial=initial_data)
+    if form.is_valid():
+        form.save()
+    context = {
+        'form': form
+    }
+    return render(request, "main/add_image.html", context)
+
+
+
 def deleteProduct(request, pk):
     producto = Producto.objects.get(id=pk)
     if request.method == 'POST':

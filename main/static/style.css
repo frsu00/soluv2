@@ -101,6 +101,13 @@ main {
     background-color: white;
 }
 
+.producto-image {
+    width: 100%;
+    height: inherit;
+    max-width: 100%
+
+}
+
 h6.final {
     color: #ea2840;
     font-size: 1.15rem;
