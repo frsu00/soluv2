@@ -140,9 +140,9 @@ class RegistrationView(FormView):
             colaborador.save()
 
             # Login the user
-            login(self.request, user)
+        login(self.request, user)
 
-            return super().form_valid(form)
+        return super().form_valid(form)
 
 
 class AddToCartView(View):
