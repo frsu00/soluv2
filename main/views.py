@@ -325,7 +325,6 @@ def addImage(request, pk):
     return render(request, "main/add_image.html", context)
 
 
-
 def deleteProduct(request, pk):
     producto = Producto.objects.get(id=pk)
     if request.method == 'POST':
@@ -351,3 +350,25 @@ def reclamos(request):
         'form': form
     }
     return render(request, "main/crear_reclamo.html", context)
+
+
+def allmypedidos(request):
+    cliente_id = request.user.profile.cliente.id
+    pedidos = Pedido.objects.filter(cliente=cliente_id)
+
+    context = {
+        'pedidos': pedidos
+    }
+    return render(request, "main/mispedidos.html", context)
+
+
+def deletepedido(request, pk):
+    pedido = Pedido.objects.get(id=pk)
+    if request.method == 'POST':
+        pedido.delete()
+        return redirect('allmypedidos')
+    context = {
+        'pedido': pedido
+    }
+    return render(request, "main/borrarpedido.html", context)
+

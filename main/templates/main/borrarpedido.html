@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<p style="font-size: 48px; color: #FF5500">¿Deseas eliminar este pedido?</p>
+
+<form class="mt-5" action="{% url 'deletepedido' pedido.id %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" name="submit" value="Eliminar">
+
+</form>
+
+
+{% endblock %}

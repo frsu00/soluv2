@@ -25,4 +25,6 @@ urlpatterns = [
     path('deleteproduct/<str:pk>', views.deleteProduct, name='deleteproduct'),
 
     path('reclamos/', views.reclamos, name='reclamos'),
+    path('allmypedidos/', views.allmypedidos, name='allmypedidos'),
+    path('deletepedido/<str:pk>', views.deletepedido, name='deletepedido'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

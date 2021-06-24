@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<p style="font-size: 48px; color: #FF5500">Todos tus pedidos podrás verlos aquí:</p>
+
+<div class="algo">
+{% for pedido in pedidos %}
+    {% if pedido.estado == "PAG" %}
+    <ul>
+        <li class="my-4">
+            <p>Pedido N°: 00-{{ pedido.id }}-{{ pedido.fecha_creacion.month }}{{ pedido.fecha_creacion.day }}{{ pedido.fecha_creacion.year }}</p>
+            <p>Fecha de creación: {{ pedido.fecha_creacion }}</p>
+            <p>Tarifa: S/{{ pedido.tarifa|floatformat:"2g" }}</p>
+            <a class="btn btn-danger" href="{% url 'deletepedido' pedido.id %}">Cancelar</a>
+        </li>
+    </ul>
+    {% else %}
+    {% endif %}
+
+
+
+{% endfor %}
+</div>
+
+{% endblock %}
