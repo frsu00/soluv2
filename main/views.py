@@ -126,6 +126,10 @@ class RegistrationView(FormView):
 
             cliente.save()
 
+            login(self.request, user)
+
+            return super().form_valid(form)
+
         # Create Colaborador if needed
         is_colaborador = form.cleaned_data['is_colaborador']
         if is_colaborador:
@@ -140,9 +144,9 @@ class RegistrationView(FormView):
             colaborador.save()
 
             # Login the user
-        login(self.request, user)
+            login(self.request, user)
 
-        return super().form_valid(form)
+            return super().form_valid(form)
 
 
 class AddToCartView(View):
